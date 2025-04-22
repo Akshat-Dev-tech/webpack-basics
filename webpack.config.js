@@ -8,7 +8,11 @@ module.exports = {
     output:{
         filename:'bundle.js',
         // path:'./dist' this will fail
-        path:path.resolve(__dirname , './dist')
+        path:path.resolve(__dirname , './dist'),
+
+        //In webPack 5 it will be auto and work for simpler cases without specifying anything (image will get loaded) , for older webpack u need to specify other wise it will give empty ''.
+        //publicPath is used to specify where it will load and also if you want to append url initals before hand like 'https/@/' + img 
+        publicPath:'dist/'
     },
     mode:'none',
      // ... other config
@@ -16,9 +20,16 @@ module.exports = {
     //Defining rules to tell webpack to import .jpg files
     //by default webpack knows to import js or json files,
     rules: [
+    //   {
+    //     test: /\.(png|jpe?g|gif)$/i,
+    //     type: 'asset/resource',  // there will be diffrent assests type that we can use here , considering reource for image.
+    //   },
+
+    //this won't generate new file like resouce but it will inject base 64 representation in js bundle.
+    //it will be useful for smaller assests , since injecting it in bundle wil increase the bundle size.
       {
         test: /\.(png|jpe?g|gif)$/i,
-        type: 'asset/resource',  // there will be diffrent assests type that we can use here , considering reource for image.
+        type: 'asset/inline',  // there will be diffrent assests type that we can use here , considering reource for image.
       },
     ],
   },
