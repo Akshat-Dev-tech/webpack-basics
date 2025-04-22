@@ -27,9 +27,26 @@ module.exports = {
 
     //this won't generate new file like resouce but it will inject base 64 representation in js bundle.
     //it will be useful for smaller assests , since injecting it in bundle wil increase the bundle size.
-      {
+    //   {
+    //     test: /\.(png|jpe?g|gif)$/i,
+    //     type: 'asset/inline',  // there will be diffrent assests type that we can use here , considering reource for image.
+    //   },
+
+
+    //this is combi of both , if the assets is less than 8kb it will acts as inline , else it will acts as resource.
+    //if you want it to chnage 8 kb check , webpack give options to change that as well. 
+     {
         test: /\.(png|jpe?g|gif)$/i,
-        type: 'asset/inline',  // there will be diffrent assests type that we can use here , considering reource for image.
+        type: 'asset',  // there will be diffrent assests type that we can use here , considering reource for image.
+
+        //changing it from 8kb to 4kb
+        //less then 4 kb , it will be inline asset
+        //more then 4 kb , it will be resource asset
+        parser:{
+            dataUrlCondition:{
+                maxSize: 4*1024 //2kb
+            }
+        }
       },
     ],
   },
