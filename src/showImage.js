@@ -1,4 +1,5 @@
 import logo from './image.jpg';
+import alttext from './altText.txt'
 
 export default function showImage() {
   const img = document.createElement('img');

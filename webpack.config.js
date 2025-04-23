@@ -48,6 +48,13 @@ module.exports = {
             }
         }
       },
+
+
+      //for txt files to read it as JS string and inject it in main bundle
+      {
+        test: /\.txt/,
+        type: 'asset/source'
+      }
     ],
   },
 }

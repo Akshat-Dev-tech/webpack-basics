@@ -22,6 +22,8 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony export */   "default": () => (/* binding */ showImage)
 /* harmony export */ });
 /* harmony import */ var _image_jpg__WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(3);
+/* harmony import */ var _altText_txt__WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(4);
+
 
 
 function showImage() {
@@ -38,6 +40,12 @@ function showImage() {
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
 module.exports = __webpack_require__.p + "bf779ebea5ab676c6977.jpg";
+
+/***/ }),
+/* 4 */
+/***/ ((module) => {
+
+module.exports = "kiwi alt text";
 
 /***/ })
 /******/ 	]);
