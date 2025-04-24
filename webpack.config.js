@@ -54,7 +54,15 @@ module.exports = {
       {
         test: /\.txt/,
         type: 'asset/source'
-      }
+      },
+      {
+        test: /\.txt/,
+        type: 'asset/source'
+      },
+      {
+        test: /\.css$/,
+        use: ['style-loader', 'css-loader'], // Processes CSS files and injects them into the DOM
+      },
     ],
   },
 }
