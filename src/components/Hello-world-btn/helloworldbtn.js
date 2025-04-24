@@ -14,3 +14,5 @@ class Helloworldbtn {
         body.appendChild(button)
     }
 }
+
+export default Helloworldbtn;

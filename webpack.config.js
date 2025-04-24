@@ -35,30 +35,48 @@ module.exports = {
 
     //this is combi of both , if the assets is less than 8kb it will acts as inline , else it will acts as resource.
     //if you want it to chnage 8 kb check , webpack give options to change that as well. 
-     {
-        test: /\.(png|jpe?g|gif)$/i,
-        type: 'asset',  // there will be diffrent assests type that we can use here , considering reource for image.
+    //  {
+    //     test: /\.(png|jpe?g|gif)$/i,
+    //     type: 'asset',  // there will be diffrent assests type that we can use here , considering reource for image.
 
-        //changing it from 8kb to 4kb
-        //less then 4 kb , it will be inline asset
-        //more then 4 kb , it will be resource asset
-        parser:{
-            dataUrlCondition:{
-                maxSize: 4*1024 //2kb
-            }
-        }
-      },
+    //     //changing it from 8kb to 4kb
+    //     //less then 4 kb , it will be inline asset
+    //     //more then 4 kb , it will be resource asset
+    //     parser:{
+    //         dataUrlCondition:{
+    //             maxSize: 4*1024 //2kb
+    //         }
+    //     }
+    //   },
 
 
       //for txt files to read it as JS string and inject it in main bundle
-      {
-        test: /\.txt/,
-        type: 'asset/source'
-      },
-      {
-        test: /\.txt/,
-        type: 'asset/source'
-      },
+      // {
+      //   test: /\.txt/,
+      //   type: 'asset/source'
+      // },
+      // {
+      //   test: /\.txt/,
+      //   type: 'asset/source'
+      // },
+
+      // For JS files
+      // babel-loader is used to transpile modern JavaScript to older versions for compatibility
+      // This is used to load JavaScript files in your project
+    //   {
+    //     test: /\.js$/,
+    //     exclude: /node_modules/,
+    //     use: {
+    //         loader: 'babel-loader',
+    //         options: {
+    //             presets: ['@babel/preset-env'],
+    //         },
+    //     },
+    // },
+      // For CSS files
+      // style-loader injects CSS into the DOM
+      // css-loader resolves CSS imports into JS
+      // This is used to load CSS files in your JavaScript
       {
         test: /\.css$/,
         use: ['style-loader', 'css-loader'], // Processes CSS files and injects them into the DOM
