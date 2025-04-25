@@ -1,6 +1,6 @@
 //To resolve path for dist file , using rquire since ecmap script won't support here.
 const path = require('path')
-
+const TerserPlugin = require('terser-webpack-plugin');
 
 //this is the min webpack configuration
 module.exports = {
@@ -83,4 +83,11 @@ module.exports = {
       },
     ],
   },
+
+  // For minification of output bundle
+  // This is used to optimize the output bundle
+  // In Webpack 5, we don't install this plugin as TerserPlugin is included by default.
+  plugins: [
+    new TerserPlugin()
+  ]
 }
