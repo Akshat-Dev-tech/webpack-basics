@@ -7,7 +7,13 @@ const MinicssExtractPlugin = require('mini-css-extract-plugin');
 module.exports = {
     entry:'./src/index.js',
     output:{
-        filename:'bundle.js',
+
+        //this is the output file name
+        //this will create a file with name bundle.[hashvalue].js in dist folder
+        //so every time there is a change in code it will create a new file with new hash value.
+        //if no change , it will refer the cached file and won't generate the new file.
+        //this is used to cache the file in browser. 
+        filename:'bundle.[contenthash].js',
         // path:'./dist' this will fail
         path:path.resolve(__dirname , './dist'),
 
@@ -94,7 +100,12 @@ module.exports = {
     // For extracting CSS into separate files
     // This is used to extract CSS into separate files
     new MinicssExtractPlugin({
-      filename: '[name].css',
+      //adding content hashing to css file name
+      //this will create a file with name bundle.[hashvalue].css in dist folder
+      //so every time there is a change in code it will create a new file with new hash value.
+      //if no change , it will refer the cached file and won't generate the new file.
+      //this is used to cache the file in browser.
+      filename: '[name].[contenthash].css',
     })
   ]
 }

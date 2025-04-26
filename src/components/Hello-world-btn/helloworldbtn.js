@@ -3,7 +3,7 @@ import './helloworldbtn.css'
 class Helloworldbtn {
     render(){
         const button = document.createElement('button')
-        button.innerHTML= 'Hello world btn'
+        button.innerHTML= 'Hello world button'
         button.classList.add('hello-world-btn')
         button.onclick = () => {
             const helloWorld = document.createElement('div')
