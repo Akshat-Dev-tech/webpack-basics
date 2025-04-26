@@ -2,6 +2,7 @@
 const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin');
 const MinicssExtractPlugin = require('mini-css-extract-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 //this is the min webpack configuration
 module.exports = {
@@ -106,6 +107,11 @@ module.exports = {
       //if no change , it will refer the cached file and won't generate the new file.
       //this is used to cache the file in browser.
       filename: '[name].[contenthash].css',
-    })
+    }),
+    //content hash will generating a new file but not cleaning the old file , hence we are getting multiple files for bundles and css.
+    // clean web pack plugin is used for cleaning the output directory before each build.
+    // This is used to clean the output directory before each build
+    new CleanWebpackPlugin()
+
   ]
 }
