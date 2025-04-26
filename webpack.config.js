@@ -1,6 +1,7 @@
 //To resolve path for dist file , using rquire since ecmap script won't support here.
 const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin');
+const MinicssExtractPlugin = require('mini-css-extract-plugin');
 
 //this is the min webpack configuration
 module.exports = {
@@ -79,15 +80,21 @@ module.exports = {
       // This is used to load CSS files in your JavaScript
       {
         test: /\.css$/,
-        use: ['style-loader', 'css-loader'], // Processes CSS files and injects them into the DOM
+        use: [MinicssExtractPlugin.loader, 'css-loader'], // Processes CSS files and injects them into the DOM
       },
     ],
   },
 
+  plugins: [
   // For minification of output bundle
   // This is used to optimize the output bundle
   // In Webpack 5, we don't install this plugin as TerserPlugin is included by default.
-  plugins: [
-    new TerserPlugin()
+    new TerserPlugin(),
+
+    // For extracting CSS into separate files
+    // This is used to extract CSS into separate files
+    new MinicssExtractPlugin({
+      filename: '[name].css',
+    })
   ]
 }
