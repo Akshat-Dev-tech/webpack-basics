@@ -25,7 +25,14 @@ module.exports = {
         //this will also work as clean webpack pk=lugin , but supported in webpack 5 new version.
         clean:true
     },
-    mode:'none',
+
+    //mode is used to specify the mode of webpack , it will automatically set the mode based on the env.
+    //if you want to set the mode manually then you can use this.
+    //mode: 'development', this will not minify the code and make it bigger.
+    //mode: 'production',  this will minify the code and make it smaller.
+    //to check the mode , we can use process.env.NODE_ENV
+    mode:'development', // 'development' or 'production'
+
      // ... other config
   module: {
     //Defining rules to tell webpack to import .jpg files
