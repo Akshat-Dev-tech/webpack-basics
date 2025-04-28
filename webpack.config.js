@@ -2,7 +2,8 @@
 const path = require('path')
 const TerserPlugin = require('terser-webpack-plugin');
 const MinicssExtractPlugin = require('mini-css-extract-plugin');
-// const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const HtmlWebpackPlugin = require('html-webpack-plugin');
+const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 
 //this is the min webpack configuration
 module.exports = {
@@ -20,7 +21,7 @@ module.exports = {
 
         //In webPack 5 it will be auto and work for simpler cases without specifying anything (image will get loaded) , for older webpack u need to specify other wise it will give empty ''.
         //publicPath is used to specify where it will load and also if you want to append url initals before hand like 'https/@/' + img 
-        publicPath:'dist/',
+        publicPath:'',
         //this will also work as clean webpack pk=lugin , but supported in webpack 5 new version.
         clean:true
     },
@@ -113,7 +114,11 @@ module.exports = {
     //content hash will generating a new file but not cleaning the old file , hence we are getting multiple files for bundles and css.
     // clean web pack plugin is used for cleaning the output directory before each build.
     // This is used to clean the output directory before each build
-    // new CleanWebpackPlugin()
+    new CleanWebpackPlugin(),
+
+    // everytime new bundle or css generate with md hash , u manually need to updat the name 
+    // it will generate and inject the bundle and css file in the html file.
+    new HtmlWebpackPlugin()
 
   ]
 }
