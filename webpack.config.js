@@ -118,7 +118,16 @@ module.exports = {
 
     // everytime new bundle or css generate with md hash , u manually need to updat the name 
     // it will generate and inject the bundle and css file in the html file.
-    new HtmlWebpackPlugin()
+    new HtmlWebpackPlugin({
+
+      //by default there will be index.html file in the dist folder and default values.
+      //we can also pass info from here , so that will be considered while creating the html file.
+      tile: 'Webpack Demo',
+      filename: 'index2.html',
+      meta: {
+        description: 'Webpack Demo'
+      },
+    })
 
   ]
 }
