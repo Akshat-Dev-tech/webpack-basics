@@ -8,7 +8,10 @@ const { write } = require('fs');
 
 //this is the min webpack configuration
 module.exports = {
-    entry:'./src/index.js',
+    entry:{
+     helloWorld : './src/helloWorld.js',
+     image: './src/CompImage.js',
+    },
     output:{
 
         //this is the output file name
@@ -16,7 +19,9 @@ module.exports = {
         //so every time there is a change in code it will create a new file with new hash value.
         //if no change , it will refer the cached file and won't generate the new file.
         //this is used to cache the file in browser. 
-        filename:'bundle.[contenthash].js',
+
+        //webpack will take name from entry point and create a file with that name.
+        filename:'[name].[contenthash].js',
         // path:'./dist' this will fail
         path:path.resolve(__dirname , './dist'),
 
@@ -71,19 +76,19 @@ module.exports = {
 
     //this is combi of both , if the assets is less than 8kb it will acts as inline , else it will acts as resource.
     //if you want it to chnage 8 kb check , webpack give options to change that as well. 
-    //  {
-    //     test: /\.(png|jpe?g|gif)$/i,
-    //     type: 'asset',  // there will be diffrent assests type that we can use here , considering reource for image.
+     {
+        test: /\.(png|jpe?g|gif)$/i,
+        type: 'asset',  // there will be diffrent assests type that we can use here , considering reource for image.
 
-    //     //changing it from 8kb to 4kb
-    //     //less then 4 kb , it will be inline asset
-    //     //more then 4 kb , it will be resource asset
-    //     parser:{
-    //         dataUrlCondition:{
-    //             maxSize: 4*1024 //2kb
-    //         }
-    //     }
-    //   },
+        //changing it from 8kb to 4kb
+        //less then 4 kb , it will be inline asset
+        //more then 4 kb , it will be resource asset
+        parser:{
+            dataUrlCondition:{
+                maxSize: 4*1024 //2kb
+            }
+        }
+      },
 
 
       //for txt files to read it as JS string and inject it in main bundle

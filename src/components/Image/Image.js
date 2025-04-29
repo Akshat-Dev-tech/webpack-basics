@@ -1,5 +1,5 @@
 import imag from '../../image.jpg';
-import './Image.scss';
+import './Image.css';
 
 class Image{
     render(){
