@@ -4,6 +4,7 @@ const TerserPlugin = require('terser-webpack-plugin');
 const MinicssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
+const { write } = require('fs');
 
 //this is the min webpack configuration
 module.exports = {
@@ -33,6 +34,23 @@ module.exports = {
     //to check the mode , we can use process.env.NODE_ENV
     mode:'development', // 'development' or 'production'
 
+
+    //added HMR
+    devServer:{
+
+      static: {
+        directory: path.join(__dirname, 'dist'),
+    },
+    devMiddleware: {
+        index:'index2.html',
+        //dev server will gebarte file in memory and don't save them , in dist 
+        //using this option to save file in dist folder as well.
+        writeToDisk: true
+    },
+    //port to run the server
+    port: 8080,
+    hot: true,
+    },
      // ... other config
   module: {
     //Defining rules to tell webpack to import .jpg files

@@ -12,7 +12,7 @@ class Helloworldbtn {
         }
         const body = document.querySelector('body')
         body.appendChild(button)
-        console.log('Node', process.env.NODE_ENV)
+        console.log('Node',process.env.NODE_ENV)
     }
 }
 
