@@ -5,6 +5,7 @@ const MinicssExtractPlugin = require('mini-css-extract-plugin');
 const HtmlWebpackPlugin = require('html-webpack-plugin');
 const { CleanWebpackPlugin } = require('clean-webpack-plugin');
 const { write } = require('fs');
+const { OptimizationStages } = require('webpack');
 
 //this is the min webpack configuration
 module.exports = {
@@ -38,7 +39,17 @@ module.exports = {
     //mode: 'production',  this will minify the code and make it smaller.
     //to check the mode , we can use process.env.NODE_ENV
     mode:'development', // 'development' or 'production'
+    
 
+    //added for loadash library , it will create spearte bundle instead of adding it in image and hellow world bundle.
+    //this will create a new file with name bundle.[hashvalue].js in dist folder
+    //so every time there is a change in code it will create a new file with new hash value.
+    //if no change , it will refer the cached file and won't generate the new file. 
+    optimization:{
+      splitChunks:{
+        chunks:'all',
+      }
+    },
 
     //added HMR
     devServer:{
