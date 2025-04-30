@@ -152,11 +152,26 @@ module.exports = {
 
       //by default there will be index.html file in the dist folder and default values.
       //we can also pass info from here , so that will be considered while creating the html file.
-      tile: 'Webpack Demo',
-      filename: 'index2.html',
+      tile: 'helloWorld',
+      filename: 'helloWorld.html',
+      //entry point obj name to define that we will add hellow world bundle here.
+      chunks:['helloWorld'],
       meta: {
         description: 'Webpack Demo'
       },
+      minify:false
+    }),
+    //To create 2 seperate html files for image and hello world , we will add it 2 times.
+    //this will create a new file with name image.html in dist folder.
+    new HtmlWebpackPlugin({
+      tile: 'image',
+      filename: 'image.html',
+      //entry point obj name to define that we will add image bundle here.
+      chunks:['image'],
+      meta: {
+        description: 'Webpack Demo'
+      },
+      minify:false
     })
 
   ]
